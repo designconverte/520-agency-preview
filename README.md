@@ -9,3 +9,5 @@ private project repo; rebuild with `node projeto/site/build.mjs --preview`.
 | V2 · Português | `/pt/` |
 | V1 · English (G-bolt hero) | `/v1/` |
 | V1 · Português | `/v1/pt/` |
+| Step-by-step test page · English | `/quiz/` |
+| Step-by-step test page · Português | `/pt/quiz/` |

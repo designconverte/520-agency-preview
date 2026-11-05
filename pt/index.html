@@ -273,7 +273,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .pain:hover .pain__n { color: var(--yellow); }
 .pain:hover h3 { transform: translateX(6px); }
 .pain:hover .pain__x { color: var(--yellow); transform: rotate(90deg); }
-@media (max-width: 860px) { .problem__grid { grid-template-columns: 1fr; } .problem__head { position: static; } .pain { grid-template-columns: 40px minmax(0, 1fr); } .pain__x { display: none; } }
+/* bridge: closes the problem list and hands off to the solution */
+.problem__bridge { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 20px; align-items: start; margin-top: clamp(28px, 4vw, 48px); font-family: var(--f-display); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.25; letter-spacing: -.02em; color: var(--white); text-wrap: pretty; }
+.problem__bridge svg { width: 40px; height: auto; color: var(--yellow); margin-top: .3em; }
+@media (max-width: 860px) { .problem__grid { grid-template-columns: 1fr; } .problem__head { position: static; } .pain { grid-template-columns: 40px minmax(0, 1fr); } .pain__x { display: none; } .problem__bridge { grid-template-columns: 40px minmax(0, 1fr); } .problem__bridge svg { width: 30px; } }
 
 /* ---------- solution (light chapter) ---------- */
 .solution { background: var(--mist); color: var(--indigo); }
@@ -326,6 +329,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .part[aria-pressed="true"] { background: var(--white); padding-left: 18px; }
 .part[aria-pressed="true"]::before { transform: scaleY(1); }
 .part[aria-pressed="true"] .part__n { color: var(--indigo); }
+/* why one page (mini-block between the anatomy and the leads sheet) */
+.whyone { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(32px, 6vw, 96px); align-items: start; margin-top: clamp(64px, 9vw, 128px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid var(--line); }
+.whyone__head { display: grid; gap: 18px; }
+.whyone__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.02; letter-spacing: -.035em; text-wrap: balance; }
+.whyone__body { color: var(--graphite); max-width: 46ch; text-wrap: pretty; }
+.whyone__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.whyone__item { display: grid; align-content: start; gap: 10px; padding: 24px 22px 26px; border-radius: var(--r-card); background: var(--white); border: 1px solid var(--line); }
+.whyone__n { font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; color: var(--graphite); }
+.whyone__item strong { font-family: var(--f-display); font-weight: 500; font-size: clamp(21px, 1.8vw, 25px); letter-spacing: -.02em; line-height: 1.1; }
+.whyone__item p { color: var(--graphite); font-size: 15px; line-height: 1.55; }
+@media (max-width: 1100px) { .whyone { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .whyone__list { grid-template-columns: 1fr; } .whyone__item { padding: 20px; } }
 .leads { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 72px); align-items: center; margin-top: clamp(64px, 9vw, 128px); padding: clamp(24px, 4vw, 48px); border-radius: 24px; background: var(--indigo); color: var(--white); position: relative; overflow: hidden; }
 .leads__note { font-family: var(--f-display); font-size: clamp(22px, 2.2vw, 30px); line-height: 1.25; letter-spacing: -.02em; text-wrap: pretty; }
 .leads__note .eyebrow { margin-bottom: 16px; font-family: var(--f-mono); }
@@ -669,7 +684,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .mock { transform: none; }
 }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","name":"520 Agency","description":"Página profissional para o seu negócio nos EUA: $500, valor único, pronta em até 3 dias. Sem reunião, sem complicação. Nove anos de experiência.","areaServed":{"@type":"Country","name":"United States"},"makesOffer":{"@type":"Offer","price":"500","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"520 Agency | Sua página profissional por $500 em até 3 dias"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Preciso entender de tecnologia?","acceptedAnswer":{"@type":"Answer","text":"Não. Se você consegue preencher um formulário curto, já está pronto para começar. A gente cuida da criação, da configuração e da publicação. Você continua focado no seu negócio."}},{"@type":"Question","name":"Preciso ter um domínio?","acceptedAnswer":{"@type":"Answer","text":"Não. Domínio é só o endereço do seu site, tipo seunegocio.com. Ainda não tem? Publicamos sua página num domínio novo. Já tem? Podemos usar o seu, se você passar os acessos."}},{"@type":"Question","name":"E se eu já tiver um website?","acceptedAnswer":{"@type":"Answer","text":"Sem problema. Sua nova página pode ir ao ar no domínio que você já usa, desde que você passe os acessos necessários. A gente explica exatamente o que é preciso, em português claro."}},{"@type":"Question","name":"Como vou receber os contatos?","acceptedAnswer":{"@type":"Answer","text":"Sempre que alguém preenche o formulário da sua página, os dados vão para uma planilha organizada: nome, telefone, e-mail e o que a pessoa precisa. E, no celular, o cliente também pode ligar direto com um toque."}},{"@type":"Question","name":"O que preciso fornecer para começar?","acceptedAnswer":{"@type":"Answer","text":"O básico: nome da empresa, seus serviços e a região que você atende. Se tiver logo e fotos reais do seu trabalho, mande também. É isso que deixa a página com a sua cara."}},{"@type":"Question","name":"Quanto tempo leva?","acceptedAnswer":{"@type":"Answer","text":"Até 3 dias. Com o formulário e o pagamento feitos, a gente começa, e sua página vai ao ar em até 3 dias. Nada de semanas de espera ou rodadas de reunião."}},{"@type":"Question","name":"O que está incluído nos $500?","acceptedAnswer":{"@type":"Answer","text":"Sua página completa, publicada e pronta: textos escritos para o seu negócio, design com a sua marca, seus serviços e suas avaliações, botão de ligar e um formulário que salva cada contato numa planilha. Tudo feito para celular, tablet e computador, por um preço fixo."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","name":"520 Agency","description":"Página profissional para o seu negócio nos EUA: $500, valor único, pronta em até 3 dias. Sem reunião, sem complicação. Nove anos de experiência.","areaServed":{"@type":"Country","name":"United States"},"makesOffer":{"@type":"Offer","price":"500","priceCurrency":"USD","itemOffered":{"@type":"Service","name":"520 Agency | Sua página profissional por $500 em até 3 dias"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Uma página é suficiente mesmo?","acceptedAnswer":{"@type":"Answer","text":"Para começar, sim. Antes de ligar, o cliente quer três respostas: o que você faz, por que confiar em você e como falar com você. Uma página bem feita responde as três. Conforme o negócio cresce, você constrói a partir dela."}},{"@type":"Question","name":"Preciso entender de tecnologia?","acceptedAnswer":{"@type":"Answer","text":"Não. Se você consegue preencher um formulário curto, já está pronto para começar. A gente cuida da criação, da configuração e da publicação. Você continua focado no seu negócio."}},{"@type":"Question","name":"Preciso ter um domínio?","acceptedAnswer":{"@type":"Answer","text":"Não. Domínio é só o endereço do seu site, tipo seunegocio.com. Ainda não tem? Publicamos sua página num domínio novo. Já tem? Podemos usar o seu, se você passar os acessos."}},{"@type":"Question","name":"E se eu já tiver um website?","acceptedAnswer":{"@type":"Answer","text":"Sem problema. Sua nova página pode ir ao ar no domínio que você já usa, desde que você passe os acessos necessários. A gente explica exatamente o que é preciso, em português claro."}},{"@type":"Question","name":"Como vou receber os contatos?","acceptedAnswer":{"@type":"Answer","text":"Sempre que alguém preenche o formulário da sua página, os dados vão para uma planilha organizada: nome, telefone, e-mail e o que a pessoa precisa. E, no celular, o cliente também pode ligar direto com um toque."}},{"@type":"Question","name":"O que preciso fornecer para começar?","acceptedAnswer":{"@type":"Answer","text":"O básico: nome da empresa, seus serviços e a região que você atende. Se tiver logo e fotos reais do seu trabalho, mande também. É isso que deixa a página com a sua cara."}},{"@type":"Question","name":"Quanto tempo leva?","acceptedAnswer":{"@type":"Answer","text":"Até 3 dias. Com o formulário e o pagamento feitos, a gente começa, e sua página vai ao ar em até 3 dias. Nada de semanas de espera ou rodadas de reunião."}},{"@type":"Question","name":"O que está incluído nos $500?","acceptedAnswer":{"@type":"Answer","text":"Sua página completa, publicada e pronta: textos escritos para o seu negócio, design com a sua marca, seus serviços e suas avaliações, botão de ligar e um formulário que salva cada contato numa planilha. Tudo feito para celular, tablet e computador, por um preço fixo."}}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Pular para o conteúdo</a>
@@ -756,12 +771,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
         <h1 id="hero-title" data-fit><span class="ln"><span class="ln__in"><span class="w"><span class="w__i">Sua</span></span> <span class="w"><span class="w__i">página</span></span> <span class="w"><span class="w__i">profissional,</span></span></span></span> <span class="ln"><span class="ln__in"><span class="w"><span class="w__i">pronta</span></span> <span class="w"><span class="w__i">em</span></span> <span class="w"><span class="w__i">até</span></span> <span class="w"><span class="w__i"><em class="acc">três</em></span></span> <span class="w"><span class="w__i">dias.</span></span></span></span></h1>
       </div>
       <div class="hero__copy">
-        <p class="hero__sub" data-hero-in>Você preenche um formulário rápido, paga $500 uma única vez e recebe uma página pensada para o seu negócio em até 3 dias. Sem reunião, sem complicação.</p>
+        <p class="hero__sub" data-hero-in>Você preenche um formulário rápido, paga $500 uma única vez e a gente cuida do resto: uma página escrita e desenhada para o seu negócio, no ar em até 3 dias. Sem reunião, sem complicação.</p>
         <div class="hero__ctas" data-hero-in>
           <a class="btn btn--primary" href="#start" data-magnet>Quero minha página por $500<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn btn--ghost" href="#work">Ver nosso trabalho</a>
         </div>
-        <p class="hero__micro" data-hero-in><svg aria-hidden="true"><use href="#i-check"/></svg>Primeiro um formulário de 2 minutos. Depois, o pagamento.</p>
+        <p class="hero__micro" data-hero-in><svg aria-hidden="true"><use href="#i-check"/></svg>Primeiro um formulário de 2 minutos. Você não paga nada para começar.</p>
       </div>
 
       <div class="mock" aria-hidden="true" data-mock>
@@ -815,6 +830,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
       <h2 class="h2" id="problem-title" data-split><span class="w"><span class="w__i">O</span></span> <span class="w"><span class="w__i">cliente</span></span> <span class="w"><span class="w__i">pesquisa</span></span> <span class="w"><span class="w__i">você</span></span> <span class="w"><span class="w__i"><em class="acc">antes</em></span></span> <span class="w"><span class="w__i">de</span></span> <span class="w"><span class="w__i">ligar.</span></span></h2>
       <p class="lead" data-reveal>Indicação, anúncio, o nome na van: tudo termina numa pesquisa rápida no celular. E o que a pessoa encontra pesa na hora de escolher: você ou o próximo da lista.</p>
     </div>
+    <div class="problem__list">
     <ol class="pains">
       <li class="pain" data-pain>
         <span class="pain__line" aria-hidden="true"></span>
@@ -843,6 +859,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
         <svg class="pain__x" aria-hidden="true"><use href="#i-x"/></svg>
       </li>
     </ol>
+    <p class="problem__bridge" data-reveal><svg viewBox="0 0 363.53 242.14" aria-hidden="true"><use href="#i-bolt"/></svg><span>A boa notícia: resolver isso não leva meses nem exige um orçamento alto. Começa com uma página bem feita.</span></p>
+    </div>
   </div>
 </section>
 
@@ -898,6 +916,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
           <span><span class="part__t">Estrutura na ordem certa</span><span class="part__d">Cada seção no lugar certo, guiando o visitante da primeira olhada até o contato.</span></span>
         </button>
       </div>
+    </div>
+
+    <div class="whyone">
+      <div class="whyone__head" data-reveal>
+        <h3 class="whyone__title">Por que uma página é o jeito certo de <em class="acc">começar</em></h3>
+        <p class="whyone__body">Você não precisa de um site de 20 páginas para parecer profissional. Precisa de uma página que responda, na ordem certa, o que o cliente quer saber antes de ligar.</p>
+      </div>
+      <ul class="whyone__list">
+        <li class="whyone__item" data-reveal><span class="whyone__n" aria-hidden="true">01</span><strong>Rápida.</strong><p>No ar em até 3 dias, não em meses.</p></li><li class="whyone__item" data-reveal><span class="whyone__n" aria-hidden="true">02</span><strong>Cabe no orçamento.</strong><p>$500, valor único: uma fração do que custa um site completo sob medida.</p></li><li class="whyone__item" data-reveal><span class="whyone__n" aria-hidden="true">03</span><strong>Feita com capricho.</strong><p>Escrita e desenhada por um time com nove anos de prática. Nunca uma página genérica feita às pressas.</p></li>
+      </ul>
     </div>
 
     <div class="leads" data-reveal>
@@ -1115,26 +1143,29 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     </div>
     <div class="qas">
       <div class="qa" data-qa>
-        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-0" id="qa-q-0"><span>Preciso entender de tecnologia?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
-        <div class="qa__a" id="qa-0" role="region" aria-labelledby="qa-q-0"><div><p>Não. Se você consegue preencher um formulário curto, já está pronto para começar. A gente cuida da criação, da configuração e da publicação. Você continua focado no seu negócio.</p></div></div>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-0" id="qa-q-0"><span>Uma página é suficiente mesmo?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-0" role="region" aria-labelledby="qa-q-0"><div><p>Para começar, sim. Antes de ligar, o cliente quer três respostas: o que você faz, por que confiar em você e como falar com você. Uma página bem feita responde as três. Conforme o negócio cresce, você constrói a partir dela.</p></div></div>
       </div><div class="qa" data-qa>
-        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-1" id="qa-q-1"><span>Preciso ter um domínio?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
-        <div class="qa__a" id="qa-1" role="region" aria-labelledby="qa-q-1"><div><p>Não. Domínio é só o endereço do seu site, tipo seunegocio.com. Ainda não tem? Publicamos sua página num domínio novo. Já tem? Podemos usar o seu, se você passar os acessos.</p></div></div>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-1" id="qa-q-1"><span>Preciso entender de tecnologia?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-1" role="region" aria-labelledby="qa-q-1"><div><p>Não. Se você consegue preencher um formulário curto, já está pronto para começar. A gente cuida da criação, da configuração e da publicação. Você continua focado no seu negócio.</p></div></div>
       </div><div class="qa" data-qa>
-        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-2" id="qa-q-2"><span>E se eu já tiver um website?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
-        <div class="qa__a" id="qa-2" role="region" aria-labelledby="qa-q-2"><div><p>Sem problema. Sua nova página pode ir ao ar no domínio que você já usa, desde que você passe os acessos necessários. A gente explica exatamente o que é preciso, em português claro.</p></div></div>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-2" id="qa-q-2"><span>Preciso ter um domínio?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-2" role="region" aria-labelledby="qa-q-2"><div><p>Não. Domínio é só o endereço do seu site, tipo seunegocio.com. Ainda não tem? Publicamos sua página num domínio novo. Já tem? Podemos usar o seu, se você passar os acessos.</p></div></div>
       </div><div class="qa" data-qa>
-        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-3" id="qa-q-3"><span>Como vou receber os contatos?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
-        <div class="qa__a" id="qa-3" role="region" aria-labelledby="qa-q-3"><div><p>Sempre que alguém preenche o formulário da sua página, os dados vão para uma planilha organizada: nome, telefone, e-mail e o que a pessoa precisa. E, no celular, o cliente também pode ligar direto com um toque.</p></div></div>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-3" id="qa-q-3"><span>E se eu já tiver um website?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-3" role="region" aria-labelledby="qa-q-3"><div><p>Sem problema. Sua nova página pode ir ao ar no domínio que você já usa, desde que você passe os acessos necessários. A gente explica exatamente o que é preciso, em português claro.</p></div></div>
       </div><div class="qa" data-qa>
-        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-4" id="qa-q-4"><span>O que preciso fornecer para começar?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
-        <div class="qa__a" id="qa-4" role="region" aria-labelledby="qa-q-4"><div><p>O básico: nome da empresa, seus serviços e a região que você atende. Se tiver logo e fotos reais do seu trabalho, mande também. É isso que deixa a página com a sua cara.</p></div></div>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-4" id="qa-q-4"><span>Como vou receber os contatos?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-4" role="region" aria-labelledby="qa-q-4"><div><p>Sempre que alguém preenche o formulário da sua página, os dados vão para uma planilha organizada: nome, telefone, e-mail e o que a pessoa precisa. E, no celular, o cliente também pode ligar direto com um toque.</p></div></div>
       </div><div class="qa" data-qa>
-        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-5" id="qa-q-5"><span>Quanto tempo leva?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
-        <div class="qa__a" id="qa-5" role="region" aria-labelledby="qa-q-5"><div><p>Até 3 dias. Com o formulário e o pagamento feitos, a gente começa, e sua página vai ao ar em até 3 dias. Nada de semanas de espera ou rodadas de reunião.</p></div></div>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-5" id="qa-q-5"><span>O que preciso fornecer para começar?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-5" role="region" aria-labelledby="qa-q-5"><div><p>O básico: nome da empresa, seus serviços e a região que você atende. Se tiver logo e fotos reais do seu trabalho, mande também. É isso que deixa a página com a sua cara.</p></div></div>
       </div><div class="qa" data-qa>
-        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-6" id="qa-q-6"><span>O que está incluído nos $500?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
-        <div class="qa__a" id="qa-6" role="region" aria-labelledby="qa-q-6"><div><p>Sua página completa, publicada e pronta: textos escritos para o seu negócio, design com a sua marca, seus serviços e suas avaliações, botão de ligar e um formulário que salva cada contato numa planilha. Tudo feito para celular, tablet e computador, por um preço fixo.</p></div></div>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-6" id="qa-q-6"><span>Quanto tempo leva?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-6" role="region" aria-labelledby="qa-q-6"><div><p>Até 3 dias. Com o formulário e o pagamento feitos, a gente começa, e sua página vai ao ar em até 3 dias. Nada de semanas de espera ou rodadas de reunião.</p></div></div>
+      </div><div class="qa" data-qa>
+        <h3><button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-7" id="qa-q-7"><span>O que está incluído nos $500?</span><span class="qa__ico" aria-hidden="true"></span></button></h3>
+        <div class="qa__a" id="qa-7" role="region" aria-labelledby="qa-q-7"><div><p>Sua página completa, publicada e pronta: textos escritos para o seu negócio, design com a sua marca, seus serviços e suas avaliações, botão de ligar e um formulário que salva cada contato numa planilha. Tudo feito para celular, tablet e computador, por um preço fixo.</p></div></div>
       </div>
     </div>
   </div>
@@ -1182,7 +1213,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
         </div>
         <p class="form__status" role="alert" data-status></p>
         <button class="btn btn--primary btn--block" type="submit" data-submit><span data-submit-label>Começar minha página</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        <p class="form__helper"><span>Leva cerca de 2 minutos.</span><span>Nunca compartilhamos suas informações.</span></p>
+        <p class="form__helper"><span>Leva cerca de 2 minutos.</span><span>Você não paga nada para começar. Nunca compartilhamos suas informações.</span></p>
       </form>
 
       <div class="success" data-success hidden tabindex="-1">
@@ -1246,7 +1277,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js" defer></script>
-<script>window.__520 = {"lang":"pt","form":{"eyebrow":"COMECE AQUI","h2":"Conte sobre o seu *negócio*.","sub":"Cinco campos rápidos, cerca de 2 minutos. Depois, você finaliza o pagamento de $500 e sua página vai ao ar em até 3 dias.","fields":{"business":{"label":"Nome da empresa","placeholder":"Como seus clientes conhecem"},"name":{"label":"Seu nome","placeholder":"Nome e sobrenome"},"phone":{"label":"Telefone","placeholder":"(555) 123-4567"},"email":{"label":"E-mail","placeholder":"voce@seunegocio.com"},"details":{"label":"Serviços e região que atende","placeholder":"Ex.: limpeza residencial em Orlando e região"}},"required_msg":"Preencha este campo, por favor.","email_msg":"Digite um e-mail válido para a gente falar com você.","phone_msg":"Digite um telefone válido para a gente falar com você.","helper":"Leva cerca de 2 minutos.","privacy":"Nunca compartilhamos suas informações.","submit":"Começar minha página","sending":"Enviando...","success_title":"Recebemos! Falta só um passo.","success_body":"Próximo passo: finalizar o pagamento de $500. Assim que ele cair, a gente começa, e sua página vai ao ar em até 3 dias. Se precisarmos de algo, entramos em contato.","success_cta":"Pagar $500 e começar","error":"Algo deu errado e seus dados não foram enviados. Tente de novo em instantes."},"ui":{"skip":"Pular para o conteúdo","menu":"Menu","close":"Fechar","home":"520 Agency — início","openMenu":"Abrir menu","closeMenu":"Fechar menu","day":"Dia","paid":"Pago","newLead":"Novo contato","now":"agora","live":"No ar","scroll":"Role","sheet":"Contatos","sheetCols":["Data","Nome","Telefone","Serviço"],"newTag":"Novo","langName":"Português","switchLabel":"View in English","mainNav":"Principal","footNav":"Rodapé","backTop":"Voltar ao topo","caseAlt":"Website criado pela 520 Agency para","anatomy":"Mostrar na página:","langGroup":"Idioma","caseVideo":"Gravação de tela do site que a 520 Agency criou para","playVideo":"Reproduzir vídeo","pauseVideo":"Pausar vídeo"},"endpoint":"","payment":""};</script>
+<script>window.__520 = {"lang":"pt","form":{"eyebrow":"COMECE AQUI","h2":"Conte sobre o seu *negócio*.","sub":"Cinco campos rápidos, cerca de 2 minutos. Depois, você finaliza o pagamento de $500 e sua página vai ao ar em até 3 dias.","fields":{"business":{"label":"Nome da empresa","placeholder":"Como seus clientes conhecem"},"name":{"label":"Seu nome","placeholder":"Nome e sobrenome"},"phone":{"label":"Telefone","placeholder":"(555) 123-4567"},"email":{"label":"E-mail","placeholder":"voce@seunegocio.com"},"details":{"label":"Serviços e região que atende","placeholder":"Ex.: limpeza residencial em Orlando e região"}},"required_msg":"Preencha este campo, por favor.","email_msg":"Digite um e-mail válido para a gente falar com você.","phone_msg":"Digite um telefone válido para a gente falar com você.","helper":"Leva cerca de 2 minutos.","privacy":"Você não paga nada para começar. Nunca compartilhamos suas informações.","submit":"Começar minha página","sending":"Enviando...","success_title":"Recebemos! Falta só um passo.","success_body":"Próximo passo: finalizar o pagamento de $500. Assim que ele cair, a gente começa, e sua página vai ao ar em até 3 dias. Se precisarmos de algo, entramos em contato.","success_cta":"Pagar $500 e começar","error":"Algo deu errado e seus dados não foram enviados. Tente de novo em instantes."},"ui":{"skip":"Pular para o conteúdo","menu":"Menu","close":"Fechar","home":"520 Agency — início","openMenu":"Abrir menu","closeMenu":"Fechar menu","day":"Dia","paid":"Pago","newLead":"Novo contato","now":"agora","live":"No ar","scroll":"Role","sheet":"Contatos","sheetCols":["Data","Nome","Telefone","Serviço"],"newTag":"Novo","langName":"Português","switchLabel":"View in English","mainNav":"Principal","footNav":"Rodapé","backTop":"Voltar ao topo","caseAlt":"Website criado pela 520 Agency para","anatomy":"Mostrar na página:","langGroup":"Idioma","caseVideo":"Gravação de tela do site que a 520 Agency criou para","playVideo":"Reproduzir vídeo","pauseVideo":"Pausar vídeo"},"endpoint":"","payment":""};</script>
 <script>
 /* Gradient ASCII — vanilla port of the React Bits background (https://reactbits.dev/backgrounds/gradient-ascii).
    Original component by React Bits (David Haz) — keep this attribution. Ported 1:1 (shaders untouched);
